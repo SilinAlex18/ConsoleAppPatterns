@@ -7,6 +7,10 @@ namespace ConsoleAppPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            CreationalPatterns.CreationalPatternsMain.Menu();
+
+            Console.ReadKey();
         }
     }
 }
