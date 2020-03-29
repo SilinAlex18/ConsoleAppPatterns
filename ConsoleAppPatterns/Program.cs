@@ -9,6 +9,7 @@ namespace ConsoleAppPatterns
             Console.WriteLine("Hello World!");
 
             CreationalPatterns.CreationalPatternsMain.Menu();
+            StructuralPatterns.StructuralPatternsMain.Menu();
 
             Console.ReadKey();
         }
