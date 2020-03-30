@@ -10,6 +10,7 @@ namespace ConsoleAppPatterns
 
             CreationalPatterns.CreationalPatternsMain.Menu();
             StructuralPatterns.StructuralPatternsMain.Menu();
+            BehavioralPatterns.BehavioralPatternsMain.Menu();
 
             Console.ReadKey();
         }

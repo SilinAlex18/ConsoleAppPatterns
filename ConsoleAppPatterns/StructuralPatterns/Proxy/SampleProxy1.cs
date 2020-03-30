@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -16,6 +16,28 @@ namespace ConsoleAppPatterns.StructuralPatterns.Proxy
     class PageContext : DbContext
     {
         public DbSet<Page> Pages { get; set; }
+
+        public PageContext()
+        {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-J13R395\SQLEXPRESS;Database=helloappdb;Trusted_Connection=True;");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Page>().HasData(
+                new Page[]
+                {
+                new Page { Id=1, Number = 1, Text = "Lorem ipsum dolor sit amet" },
+                new Page { Id=2, Number = 2, Text = "Ut enim ad minim veniam" },
+                new Page { Id=3, Number = 3, Text = "Excepteur sint occaecat cupidatat non proident" }
+                });
+        }
     }
 
     interface IBook : IDisposable
